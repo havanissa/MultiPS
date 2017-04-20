@@ -1,6 +1,11 @@
 unsigned long UHF_timeout;
 void UHF_check_radio()
 {
+  if(!uhf_state)
+  {
+    display.invertDisplay(false);
+    return;
+  }
   if(millis() > UHF_timeout)
   {
     if(digitalRead(UHF_SQ)==HIGH && !mp3playing)

@@ -23,8 +23,8 @@ void write_time_sec()
 void displayDigits(int digits)
 {
     // utility function for digital clock display: prints preceding colon and leading 0
-    display.print(':');
+    display.print(F(":"));
     if(digits < 10)
-        display.print('0');
+        display.print(F("0"));
     display.print(digits);
 }

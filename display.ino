@@ -1,4 +1,4 @@
-void update_display()
+void front_display()
 {
     display.clearDisplay();
     write_time(); // Update time on screen
@@ -12,17 +12,24 @@ void update_display()
   display.print(F("M"));
   display.setCursor(1,55);
   display.print(F("U "));
-  display.print(UHF_FREQ/1000);
-  display.print(F("."));
-  display.print(UHF_FREQ%1000);
-  display.print(F("M"));
+  if(uhf_state)
+  {
+    display.print(UHF_FREQ/1000);
+    display.print(F("."));
+    display.print(UHF_FREQ%1000);
+    display.print(F("M"));
+  }else{
+    display.print(F("disabled"));
+  }
   
   display.setCursor(70,45);
   display.print(F("BAT "));
+  display.print(F(" 0.00"));
+  /*
   display.print(vcurr/100);
   display.print(F("."));
   display.print(vcurr%100);
-  
+  */
   display.print(F("v"));
   display.setCursor(70,55);
   if(mp3playing){
@@ -41,8 +48,9 @@ void update_display()
     display.print(F("MP3 PAUS"));
   }
     
-  display.display();
+  
 }
+/*
 void update_voltage()
 {
   int voltage;
@@ -55,4 +63,4 @@ void update_voltage()
   voltage = analogRead(A6);
   vsum += voltage;
   vread++;
-}
+}*/
